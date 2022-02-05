@@ -16,10 +16,10 @@ class CompanyView(View):
     def get(self, request , id=0):
         if id > 0:
             companies = list(models.Company.objects.filter(id = id).values())
-            compani = companies[0]
+            company = companies[0]
             context = {
                     'message':'success',
-                    'data' : compani
+                    'data' : company
                 }
             return JsonResponse(context)      
 
@@ -28,7 +28,7 @@ class CompanyView(View):
             if len(companies)>0:
                 context = {
                     'message':'success',
-                    'data' : companies
+                    'companies' : companies
                 }
             else:
                 context = {
